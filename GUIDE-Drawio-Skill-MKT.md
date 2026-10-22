@@ -149,7 +149,7 @@ git push fork main
 | Remote | Dépôt |
 | --- | --- |
 | `origin` | `Agents365-ai/drawio-skill` (amont) |
-| `fork` | `SahelCyBER/drawio-skill` (ce fork) |
+| `fork` | `SahelCyBER/Drawio-Skill-MKT` (ce fork) |
 
 Les commits suivent la convention `feat`, `fix`, `docs`, `chore`. Avant un
 envoi vers un dépôt distant, lancer la revue de sécurité du poste si elle est

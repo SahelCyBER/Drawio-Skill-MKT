@@ -11,7 +11,7 @@ Read this file when:
 ## Locations and lookup order
 
 1. `~/.drawio-skill/styles/<name>.json` — user presets (survive `git pull`).
-2. `<this-skill-dir>/styles/built-in/<name>.json` — built-ins shipped with the skill (`petitpouss` — charte ONG PetitPouss, or `#D4A800` et noir `#1A1D20`, Georgia/Arial, cartes arrondies, see `references/petitpouss.md`; `default`, `corporate`, `handdrawn`, `colorblind-safe` — Okabe-Ito palette, distinguishable under color-vision deficiency, thicker strokes; `dark` — dark fills + page background, light strokes, needs the `extras.fontColor`/`edgeColor`/`background` rules below).
+2. `<this-skill-dir>/styles/built-in/<name>.json` — built-ins shipped with the skill (`sahelcyber` — charte Sahel CyBER, preset par défaut du fork, violet `#683EE5`, encre `#0A1233`, ambre `#F59E0B`, see `references/sahelcyber.md`; `petitpouss` — charte ONG PetitPouss, or `#D4A800` et noir `#1A1D20`, Georgia/Arial, cartes arrondies, see `references/petitpouss.md`; `default`, `corporate`, `handdrawn`, `colorblind-safe` — Okabe-Ito palette, distinguishable under color-vision deficiency, thicker strokes; `dark` — dark fills + page background, light strokes, needs the `extras.fontColor`/`edgeColor`/`background` rules below).
 
 A user preset shadows a built-in of the same name.
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""ppicons - pictogrammes PetitPouss pour diagrammes draw.io.
+"""ppicons - pictogrammes de marque pour diagrammes draw.io.
 
-Charte : or #D4A800, noir #1A1D20, blanc #FFFFFF, gris #5A5D60.
+Charte Sahel CyBER (defaut) : violet #683EE5, encre #0A1233, ambre #F59E0B,
+violet fonce #4B2FBF. Charte PetitPouss conservee : or #D4A800, noir #1A1D20.
 
     python3 scripts/ppicons.py list
     python3 scripts/ppicons.py svg users --color or --out /tmp/users.svg
@@ -30,12 +31,21 @@ from xml.sax.saxutils import quoteattr
 # ---------------------------------------------------------------------------
 
 COLORS = {
+    # Charte Sahel CyBER, relevee sur sahelcyber.com
+    "violet": "#683EE5",
+    "violet-fonce": "#4B2FBF",
+    "encre": "#0A1233",
+    "ambre": "#F59E0B",
+    # Charte PetitPouss
     "or": "#D4A800",
     "noir": "#1A1D20",
     "blanc": "#FFFFFF",
     "gris": "#5A5D60",
 }
 
+BRAND = COLORS["violet"]
+INK = COLORS["encre"]
+AMBER = COLORS["ambre"]
 GOLD = COLORS["or"]
 DARK = COLORS["noir"]
 WHITE = COLORS["blanc"]
@@ -115,6 +125,10 @@ ICONS = {
         '<rect width="20" height="8" x="2" y="14" rx="2" ry="2"/>'
         '<line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>'
     ),
+    "cloud": '<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>',
+    "code": (
+        '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>'
+    ),
     "wifi": (
         '<path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/>'
         '<path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/>'
@@ -176,6 +190,8 @@ LABELS = {
     "tablet": "tablette, appareil",
     "database": "données, stockage",
     "server": "serveur, bureau",
+    "cloud": "cloud, hébergement",
+    "code": "développement, logiciel",
     "wifi": "connexion",
     "wifi-off": "hors ligne",
     "lock": "maîtrise, verrouillage",
@@ -198,7 +214,8 @@ STROKE = 1.7       # épaisseur du trait, en unités de la grille 24
 
 
 def resolve_color(value):
-    """Accepte un nom de la charte (or, noir, blanc, gris) ou un code #RRGGBB."""
+    """Accepte un nom de la charte (violet, encre, ambre, or, noir, blanc, gris)
+    ou un code #RRGGBB."""
     key = value.lower().lstrip("#")
     if key in COLORS:
         return COLORS[key]
@@ -212,7 +229,7 @@ def resolve_color(value):
     )
 
 
-def svg(name, color=GOLD, stroke=STROKE, pad=PAD):
+def svg(name, color=BRAND, stroke=STROKE, pad=PAD):
     """Renvoie le SVG complet du pictogramme."""
     if name not in ICONS:
         raise KeyError("pictogramme inconnu : %s" % name)
@@ -235,7 +252,7 @@ def svg(name, color=GOLD, stroke=STROKE, pad=PAD):
     )
 
 
-def png(name, color=GOLD, size=256, stroke=STROKE):
+def png(name, color=BRAND, size=256, stroke=STROKE):
     """Rasterise le pictogramme en PNG transparent (necessite PyMuPDF)."""
     try:
         import pymupdf
@@ -253,21 +270,21 @@ def png(name, color=GOLD, size=256, stroke=STROKE):
     return pix.tobytes("png")
 
 
-def data_uri(name, color=GOLD, size=256, stroke=STROKE):
+def data_uri(name, color=BRAND, size=256, stroke=STROKE):
     """Data URI directement utilisable dans un style draw.io."""
     blob = png(name, color, size, stroke)
     # Le point-virgule doit etre encode : le parseur de style draw.io coupe sur ';'.
     return "data:image/png%3Bbase64," + base64.b64encode(blob).decode()
 
 
-def image_style(name, color=GOLD, size=256, stroke=STROKE):
+def image_style(name, color=BRAND, size=256, stroke=STROKE):
     """Style complet d'un sommet image."""
     return "shape=image;html=1;imageAspect=1;image=%s;" % data_uri(
         name, color, size, stroke
     )
 
 
-def cell(cid, name, color=DARK, x=0, y=0, size=32, parent="1"):
+def cell(cid, name, color=BRAND, x=0, y=0, size=32, parent="1"):
     """Sommet <mxCell> pret a coller dans un mxGraphModel."""
     return (
         '<mxCell id=%s value="" style=%s vertex="1" parent=%s>'
@@ -292,7 +309,7 @@ def cell(cid, name, color=DARK, x=0, y=0, size=32, parent="1"):
 def main(argv=None):
     parser = argparse.ArgumentParser(
         prog="ppicons",
-        description="Pictogrammes PetitPouss pour draw.io (or #D4A800, noir #1A1D20).",
+        description="Pictogrammes de marque pour draw.io (violet #683EE5 par defaut).",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -307,7 +324,11 @@ def main(argv=None):
     ):
         p = sub.add_parser(name, help=helptext)
         p.add_argument("icon", choices=sorted(ICONS), help="nom du pictogramme")
-        p.add_argument("--color", default="or", help="or, noir, blanc, gris ou #RRGGBB")
+        p.add_argument(
+            "--color",
+            default="violet",
+            help="violet, encre, ambre, or, noir, blanc, gris ou #RRGGBB",
+        )
         p.add_argument("--stroke", type=float, default=STROKE, help="epaisseur du trait")
         if name == "uri":
             p.add_argument("--size", type=int, default=256, help="resolution du PNG embarque")

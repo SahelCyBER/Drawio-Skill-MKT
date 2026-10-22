@@ -17,18 +17,24 @@ A skill that turns natural language and real system sources into maintainable `.
   <img src="assets/hero-demo.gif" width="900" alt="Hero demo: Terraform source becomes an architecture diagram with official icons; the v2 change renders as an updated diagram">
 </p>
 
-## Fork PetitPouss
+## Drawio-Skill-MKT
 
-Ce fork de travail ajoute une couche de marque pour les documents de l'ONG
-PetitPouss (Niger, éducation numérique inclusive) :
+Ce fork de travail applique la charte de [sahelcyber.com](https://sahelcyber.com)
+à tous les diagrammes de la marque :
 
-- `styles/built-in/petitpouss.json` — preset or `#D4A800` et noir `#1A1D20`,
-  Georgia et Arial, cartes arrondies, arêtes or ;
-- `scripts/ppicons.py` — 26 pictogrammes (or, noir, blanc) exportés en SVG,
-  PNG, data URI ou cellule draw.io prête à coller ;
-- `references/petitpouss.md` — charte, composition type, export Word, pièges ;
-- `examples/petitpouss/` — planche pédagogique complète, à adapter en changeant
-  les libellés.
+- `styles/built-in/sahelcyber.json` : preset violet `#683EE5`, encre `#0A1233`,
+  ambre `#F59E0B`, cartes arrondies ; il est actif par défaut via
+  `~/.drawio-skill/styles/sahelcyber.json` ;
+- `scripts/ppicons.py` : 26 pictogrammes (violet par défaut, plus encre, ambre
+  et les couleurs PetitPouss) exportés en SVG, PNG, data URI ou cellule draw.io
+  prête à coller ;
+- `references/sahelcyber.md` : charte, composition type, export Word, pièges ;
+- `examples/sahelcyber/` : planche complète, à adapter en changeant les
+  libellés ;
+- `GUIDE-Drawio-Skill-MKT.md` : prise en main et commandes du quotidien.
+
+Le preset `petitpouss` (or et noir, ONG PetitPouss) reste disponible pour les
+documents de l'ONG.
 
 Le reste du dépôt vient de
 [Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill) et

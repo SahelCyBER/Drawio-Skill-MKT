@@ -21,8 +21,14 @@ class TestSkillMetadata(unittest.TestCase):
         metadata = json.loads(metadata_match.group(1))
 
         self.assertEqual("3.4.3", metadata.get("version"))
+        # This fork points homepage at its own repository and records upstream.
         self.assertEqual(
-            "https://github.com/Agents365-ai/drawio-skill", metadata.get("homepage")
+            "https://github.com/Agents365-ai/drawio-skill",
+            metadata.get("upstream"),
+        )
+        self.assertTrue(
+            metadata.get("homepage", "").startswith("https://github.com/"),
+            "homepage must point at a GitHub repository",
         )
         self.assertEqual(["macos", "linux", "windows"], metadata.get("platforms"))
 

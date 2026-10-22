@@ -1,0 +1,56 @@
+{
+  "$schema": "../schema.json",
+  "name": "sahelcyber",
+  "version": 1,
+  "default": false,
+  "source": {
+    "type": "hand-authored",
+    "path": "https://sahelcyber.com",
+    "extracted_at": "2026-10-22"
+  },
+  "confidence": "high",
+  "palette": {
+    "primary":   { "fillColor": "#FFFFFF", "strokeColor": "#683EE5" },
+    "success":   { "fillColor": "#F4F1FE", "strokeColor": "#683EE5" },
+    "warning":   { "fillColor": "#FFF3E6", "strokeColor": "#F97316" },
+    "accent":    { "fillColor": "#FFF8E8", "strokeColor": "#F59E0B" },
+    "danger":    { "fillColor": "#FFFFFF", "strokeColor": "#DC2626" },
+    "neutral":   { "fillColor": "#EFF1F8", "strokeColor": "#C9CEE3" },
+    "secondary": { "fillColor": "#E6E1FB", "strokeColor": "#4B2FBF" }
+  },
+  "roles": {
+    "service":  "primary",
+    "database": "secondary",
+    "queue":    "warning",
+    "gateway":  "accent",
+    "error":    "danger",
+    "external": "neutral",
+    "security": "success"
+  },
+  "shapes": {
+    "service":   "rounded=1;arcSize=10",
+    "database":  "shape=cylinder3",
+    "queue":     "rounded=1;arcSize=10",
+    "decision":  "rhombus",
+    "external":  "rounded=1;arcSize=10;dashed=1",
+    "container": "swimlane;startSize=34;rounded=1;arcSize=6"
+  },
+  "font": {
+    "fontFamily": "Arial",
+    "fontSize": 12,
+    "titleFontSize": 14,
+    "titleBold": true
+  },
+  "edges": {
+    "style": "edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1",
+    "arrow": "endArrow=block;endFill=1;strokeWidth=1.5",
+    "dashedFor": ["optionnel", "facultatif", "asynchrone", "mise à jour"]
+  },
+  "extras": {
+    "sketch": false,
+    "globalStrokeWidth": 1,
+    "background": "#FFFFFF",
+    "fontColor": "#0A1233",
+    "edgeColor": "#683EE5"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "../schema.json",
+  "name": "petitpouss",
+  "version": 1,
+  "default": false,
+  "source": { "type": "hand-authored", "extracted_at": "2026-10-22" },
+  "confidence": "high",
+  "palette": {
+    "primary":   { "fillColor": "#FFFFFF", "strokeColor": "#D4A800" },
+    "success":   { "fillColor": "#FFFFFF", "strokeColor": "#1A1D20" },
+    "warning":   { "fillColor": "#FBF3D9", "strokeColor": "#D4A800" },
+    "accent":    { "fillColor": "#FBF3D9", "strokeColor": "#D4A800" },
+    "danger":    { "fillColor": "#FFFFFF", "strokeColor": "#B3261E" },
+    "neutral":   { "fillColor": "#F5F6F7", "strokeColor": "#EAEAEA" },
+    "secondary": { "fillColor": "#EFEFF0", "strokeColor": "#1A1D20" }
+  },
+  "roles": {
+    "service":  "primary",
+    "database": "secondary",
+    "queue":    "warning",
+    "gateway":  "accent",
+    "error":    "danger",
+    "external": "neutral",
+    "security": "success"
+  },
+  "shapes": {
+    "service":   "rounded=1;arcSize=8",
+    "database":  "shape=cylinder3",
+    "queue":     "rounded=1;arcSize=8",
+    "decision":  "rhombus",
+    "external":  "rounded=1;arcSize=8;dashed=1",
+    "container": "swimlane;startSize=34;rounded=1;arcSize=4"
+  },
+  "font": {
+    "fontFamily": "Arial",
+    "fontSize": 12,
+    "titleFontSize": 14,
+    "titleBold": true
+  },
+  "edges": {
+    "style": "edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1",
+    "arrow": "endArrow=block;endFill=1;strokeWidth=1.5",
+    "dashedFor": ["optionnel", "facultatif", "asynchrone", "mise à jour"]
+  },
+  "extras": {
+    "sketch": false,
+    "globalStrokeWidth": 1,
+    "background": "#FFFFFF",
+    "fontColor": "#1A1D20",
+    "edgeColor": "#1A1D20"
+  }
+}

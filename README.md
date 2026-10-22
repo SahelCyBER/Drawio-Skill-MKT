@@ -17,6 +17,23 @@ A skill that turns natural language and real system sources into maintainable `.
   <img src="assets/hero-demo.gif" width="900" alt="Hero demo: Terraform source becomes an architecture diagram with official icons; the v2 change renders as an updated diagram">
 </p>
 
+## Fork PetitPouss
+
+Ce fork de travail ajoute une couche de marque pour les documents de l'ONG
+PetitPouss (Niger, éducation numérique inclusive) :
+
+- `styles/built-in/petitpouss.json` — preset or `#D4A800` et noir `#1A1D20`,
+  Georgia et Arial, cartes arrondies, arêtes or ;
+- `scripts/ppicons.py` — 26 pictogrammes (or, noir, blanc) exportés en SVG,
+  PNG, data URI ou cellule draw.io prête à coller ;
+- `references/petitpouss.md` — charte, composition type, export Word, pièges ;
+- `examples/petitpouss/` — planche pédagogique complète, à adapter en changeant
+  les libellés.
+
+Le reste du dépôt vient de
+[Agents365-ai/drawio-skill](https://github.com/Agents365-ai/drawio-skill) et
+suit sa documentation d'origine.
+
 ## ✨ Highlights
 
 **From a prompt**

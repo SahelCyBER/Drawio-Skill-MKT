@@ -1,10 +1,10 @@
 ---
 disable-model-invocation: true
 name: drawio-skill
-description: Create and edit draw.io/diagrams.net diagrams as editable `.drawio` files. Covers architecture, UML/ERD/sequence, BPMN, network, and swimlane views authored from a description or converted from code, IaC, SQL, and API schemas, plus sync, query, test, review, export, and publish of existing diagrams. Use when the user asks for draw.io/diagrams.net or an editable diagram; prefer Mermaid/PlantUML when diagrams-as-code is enough.
+description: Create and edit draw.io/diagrams.net diagrams as editable `.drawio` files. Covers architecture, UML/ERD/sequence, BPMN, network, and swimlane views authored from a description or converted from code, IaC, SQL, and API schemas, plus sync, query, test, review, export, and publish of existing diagrams. Use when the user asks for draw.io/diagrams.net or an editable diagram; prefer Mermaid/PlantUML when diagrams-as-code is enough. This fork adds the PetitPouss brand layer: preset `petitpouss`, French reference, and pictogram generator.
 license: MIT
 allowed-tools: [Bash, Read, Write, WebFetch]
-metadata: {"openclaw":{"requires":{"anyBins":["python3"]},"emoji":"📐","os":["darwin","linux","win32"],"install":[{"id":"brew-drawio","kind":"brew","formula":"drawio","bins":["drawio"],"label":"Install draw.io for native exports","os":["darwin"],"optional":true},{"id":"brew-graphviz","kind":"brew","formula":"graphviz","bins":["dot"],"label":"Install Graphviz for automatic layout","os":["darwin"],"optional":true}]},"hermes":{"tags":["drawio","diagram","architecture","visualization","uml"],"category":"design","requires_tools":["python3"],"related_skills":["mermaid","excalidraw","plantuml"]},"author":"Agents365-ai","version":"3.4.3","homepage":"https://github.com/Agents365-ai/drawio-skill","compatibility":"Core IR, XML, sync, query, test, review, and Story workflows need Python 3 only; native export needs draw.io; Graphviz is optional.","platforms":["macos","linux","windows"]}
+metadata: {"openclaw":{"requires":{"anyBins":["python3"]},"emoji":"📐","os":["darwin","linux","win32"],"install":[{"id":"brew-drawio","kind":"brew","formula":"drawio","bins":["drawio"],"label":"Install draw.io for native exports","os":["darwin"],"optional":true},{"id":"brew-graphviz","kind":"brew","formula":"graphviz","bins":["dot"],"label":"Install Graphviz for automatic layout","os":["darwin"],"optional":true}]},"hermes":{"tags":["drawio","diagram","architecture","visualization","uml"],"category":"design","requires_tools":["python3"],"related_skills":["mermaid","excalidraw","plantuml"]},"author":"Agents365-ai","version":"3.4.3","homepage":"https://github.com/SahelCyBER/drawio-skill","upstream":"https://github.com/Agents365-ai/drawio-skill","compatibility":"Core IR, XML, sync, query, test, review, and Story workflows need Python 3 only; native export needs draw.io; Graphviz is optional.","platforms":["macos","linux","windows"]}
 ---
 
 # Draw.io Architecture Studio
@@ -36,9 +36,22 @@ and accessible publishing over a shared Diagram IR.
 | Pipeline, journey, or subsystem map drawn as a metro/subway map | Use `tubemap.py`; read `references/tubemap.md` |
 | Shape, cloud/vendor, AI, or Databricks icon | Read `references/shapes.md` or `references/databricks.md`; never guess shape names |
 | Learn/apply/manage a visual style | Read `references/style-presets.md` |
+| Diagramme PetitPouss (ONG, éducation, bailleurs, note en français) | Read `references/petitpouss.md`; preset `petitpouss` plus `scripts/ppicons.py` |
 | Extract a reusable style from an existing diagram or theme | Read `references/style-extraction.md` |
 | Existing image to editable diagram (screenshot, whiteboard photo, legacy PNG) | Read `references/derasterize.md` |
 | Export/platform problem | Read `references/troubleshooting.md`; for access/network questions read `references/security.md` |
+
+## Charte PetitPouss (ce fork)
+
+Tout diagramme destiné à l'ONG PetitPouss suit `references/petitpouss.md` :
+
+- preset `petitpouss` : or `#D4A800`, noir `#1A1D20`, Georgia pour les titres,
+  Arial pour le texte, cartes arrondies, arêtes or ;
+- pictogrammes par `scripts/ppicons.py` (26 tracés, or/noir/blanc), embarqués
+  en data URI PNG avec `%3B` — jamais de SVG ni de chemin local ;
+- export à `--scale 2`, insertion Word en paysage (26,6 cm pour une A4).
+
+Exemple complet : `examples/petitpouss/demo-education.py`.
 
 ## Unified CLI
 
